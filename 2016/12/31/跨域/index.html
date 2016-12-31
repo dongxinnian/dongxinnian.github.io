@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>跨域json | 新年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jsonp原生写法12345678910111213141516171819202122&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElem">
+  <meta name="description" content="jsonp原生写法123456789101112131415161718192021&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElemen">
 <meta property="og:type" content="article">
 <meta property="og:title" content="跨域json">
 <meta property="og:url" content="http://yoursite.com/2016/12/31/跨域/index.html">
 <meta property="og:site_name" content="新年">
-<meta property="og:description" content="jsonp原生写法12345678910111213141516171819202122&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElem">
-<meta property="og:updated_time" content="2016-12-31T16:31:46.914Z">
+<meta property="og:description" content="jsonp原生写法123456789101112131415161718192021&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElemen">
+<meta property="og:updated_time" content="2016-12-31T16:34:18.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="跨域json">
-<meta name="twitter:description" content="jsonp原生写法12345678910111213141516171819202122&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElem">
+<meta name="twitter:description" content="jsonp原生写法123456789101112131415161718192021&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElemen">
   
     <link rel="alternative" href="/atom.xml" title="新年" type="application/atom+xml">
   
@@ -168,7 +168,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>jsonp原生写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;button id=&quot;btn&quot;&gt;click&lt;/button&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    function $(str)&#123;</div><div class="line">        return document.getElementById(str)</div><div class="line">    &#125;</div><div class="line">    &lt;!--more--&gt;</div><div class="line">    //创建script标签</div><div class="line">    function CreateScript(src) &#123;</div><div class="line">        var Scrip=document.createElement(&apos;script&apos;);</div><div class="line">        Scrip.src=src;</div><div class="line">        document.body.appendChild(Scrip);</div><div class="line">    &#125;</div><div class="line">    //创建callback函数</div><div class="line">    function jsonpcallback(json) &#123;</div><div class="line">            console.log(json);//Object &#123; email=&quot;中国&quot;,email2=&quot;中国222&quot;&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //发生点击事件发起请求</div><div class="line">    $(&apos;element&apos;).onclick=function()&#123;</div><div class="line">      CreateScript(&quot;http://localhost:51335/somejson?callback=jsonpcallback&quot;)    </div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+        <p>jsonp原生写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;button id=&quot;btn&quot;&gt;click&lt;/button&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    function $(str)&#123;</div><div class="line">        return document.getElementById(str)</div><div class="line">    &#125;</div><div class="line">    //创建script标签</div><div class="line">    function CreateScript(src) &#123;</div><div class="line">        var Scrip=document.createElement(&apos;script&apos;);</div><div class="line">        Scrip.src=src;</div><div class="line">        document.body.appendChild(Scrip);</div><div class="line">    &#125;</div><div class="line">    //创建callback函数</div><div class="line">    function jsonpcallback(json) &#123;</div><div class="line">            console.log(json);//Object &#123; email=&quot;中国&quot;,email2=&quot;中国222&quot;&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //发生点击事件发起请求</div><div class="line">    $(&apos;element&apos;).onclick=function()&#123;</div><div class="line">      CreateScript(&quot;http://localhost:51335/somejson?callback=jsonpcallback&quot;)    </div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p> <em>总结</em><br>        jsonp就是利用script标签绕过同源策略，callback就是页面存在的回调方法，参数就是得到的json。</p>
 <p><strong>jQuery获取jsonp方法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&quot;element&quot;).click(function () &#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">        url: &apos;http://localhost:2701/home/somejsonp&apos;,</div><div class="line">        dataType: &quot;jsonp&quot;,</div><div class="line">        jsonp: &quot;callback&quot;,</div><div class="line">        success: function (data) &#123;</div><div class="line">            console.log(data)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
@@ -341,15 +342,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">小故事，回忆， 标题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">小故事</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">jsonp</a>
+                <a href="javascript:void(0)">小故事，回忆， 标题</a>
               </li>
              
               <li class="article-tag-list-item">
