@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | 新年</title>
+  <title>跨域json | 新年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个可以肆意放肆的地方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="新年">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="jsonp原生写法12345678910111213141516171819202122&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域json">
+<meta property="og:url" content="http://yoursite.com/2016/12/31/跨域/index.html">
 <meta property="og:site_name" content="新年">
-<meta property="og:description" content="一个可以肆意放肆的地方">
+<meta property="og:description" content="jsonp原生写法12345678910111213141516171819202122&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElem">
+<meta property="og:updated_time" content="2016-12-31T16:31:46.914Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新年">
-<meta name="twitter:description" content="一个可以肆意放肆的地方">
+<meta name="twitter:title" content="跨域json">
+<meta name="twitter:description" content="jsonp原生写法12345678910111213141516171819202122&amp;lt;button id=&amp;quot;btn&amp;quot;&amp;gt;click&amp;lt;/button&amp;gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;    function $(str)&amp;#123;        return document.getElem">
   
     <link rel="alternative" href="/atom.xml" title="新年" type="application/atom+xml">
   
@@ -149,49 +150,123 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-跨域" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/01/d/" class="archive-article-date">
-  	<time datetime="2016-12-31T16:23:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-01</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/01/d/">d</a>
+    <h1 class="article-title" itemprop="name">
+      跨域json
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        <a href="/2016/12/31/跨域/" class="archive-article-date">
+  	<time datetime="2016-12-30T17:08:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-31</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jsonp原生写法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;button id=&quot;btn&quot;&gt;click&lt;/button&gt;</div><div class="line">&lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">    function $(str)&#123;</div><div class="line">        return document.getElementById(str)</div><div class="line">    &#125;</div><div class="line">    &lt;!--more--&gt;</div><div class="line">    //创建script标签</div><div class="line">    function CreateScript(src) &#123;</div><div class="line">        var Scrip=document.createElement(&apos;script&apos;);</div><div class="line">        Scrip.src=src;</div><div class="line">        document.body.appendChild(Scrip);</div><div class="line">    &#125;</div><div class="line">    //创建callback函数</div><div class="line">    function jsonpcallback(json) &#123;</div><div class="line">            console.log(json);//Object &#123; email=&quot;中国&quot;,email2=&quot;中国222&quot;&#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    //发生点击事件发起请求</div><div class="line">    $(&apos;element&apos;).onclick=function()&#123;</div><div class="line">      CreateScript(&quot;http://localhost:51335/somejson?callback=jsonpcallback&quot;)    </div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p> <em>总结</em><br>        jsonp就是利用script标签绕过同源策略，callback就是页面存在的回调方法，参数就是得到的json。</p>
+<p><strong>jQuery获取jsonp方法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(&quot;element&quot;).click(function () &#123;</div><div class="line">    $.ajax(&#123;</div><div class="line">        url: &apos;http://localhost:2701/home/somejsonp&apos;,</div><div class="line">        dataType: &quot;jsonp&quot;,</div><div class="line">        jsonp: &quot;callback&quot;,</div><div class="line">        success: function (data) &#123;</div><div class="line">            console.log(data)</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsonp-前端/">jsonp 前端</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/编程/">编程</a>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/12/31/跨域/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
-  
 
-    
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/12/25/一句话一个故事/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一句话一个故事</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
 
 
           </div>
@@ -214,8 +289,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -266,11 +341,19 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)">小故事，回忆， 标题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)">小故事</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)">小故事，回忆， 标题</a>
+                <a href="javascript:void(0)">jsonp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)">jsonp 前端</a>
               </li>
             
             <div class="clearfix"></div>
