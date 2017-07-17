@@ -6,17 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/6 | 新年</title>
+  <title>stopPropagation,preventDefault和return false的区别 | 新年</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个可以肆意放肆的地方">
-<meta property="og:type" content="website">
-<meta property="og:title" content="新年">
-<meta property="og:url" content="http://yoursite.com/archives/2017/06/index.html">
+  <meta name="description" content="因为有父子节点同在，有监听事件和浏览器默认动作之分，使用javascript时为了达到预期效果经常要阻止事件和动作的执行，一般会用到三种方法分别是stopPropagation(  ), preventDefault( )和return false;它们之间有什么区别，该何时使用呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stopPropagation,preventDefault和return false的区别">
+<meta property="og:url" content="http://yoursite.com/2017/07/17/stopPropagation-preventDefault和return-false的区别/index.html">
 <meta property="og:site_name" content="新年">
-<meta property="og:description" content="一个可以肆意放肆的地方">
+<meta property="og:description" content="因为有父子节点同在，有监听事件和浏览器默认动作之分，使用javascript时为了达到预期效果经常要阻止事件和动作的执行，一般会用到三种方法分别是stopPropagation(  ), preventDefault( )和return false;它们之间有什么区别，该何时使用呢？">
+<meta property="og:updated_time" content="2017-07-17T15:20:49.176Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新年">
-<meta name="twitter:description" content="一个可以肆意放肆的地方">
+<meta name="twitter:title" content="stopPropagation,preventDefault和return false的区别">
+<meta name="twitter:description" content="因为有父子节点同在，有监听事件和浏览器默认动作之分，使用javascript时为了达到预期效果经常要阻止事件和动作的执行，一般会用到三种方法分别是stopPropagation(  ), preventDefault( )和return false;它们之间有什么区别，该何时使用呢？">
   
     <link rel="alternative" href="/atom.xml" title="新年" type="application/atom+xml">
   
@@ -149,96 +150,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-stopPropagation-preventDefault和return-false的区别" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/hexo搭建个人博客/" class="archive-article-date">
-  	<time datetime="2017-06-30T07:41:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/hexo搭建个人博客/">Hexo搭建个人博客</a>
+    <h1 class="article-title" itemprop="name">
+      stopPropagation,preventDefault和return false的区别
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/07/17/stopPropagation-preventDefault和return-false的区别/" class="archive-article-date">
+  	<time datetime="2017-07-17T14:58:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>因为有父子节点同在，有监听事件和浏览器默认动作之分，使用javascript时为了达到预期效果经常要阻止事件和动作的执行，一般会用到三种方法分别是<strong><em>stopPropagation(  )</em></strong>, <strong><em>preventDefault( )</em></strong>和<strong><em>return false</em></strong>;它们之间有什么区别，该何时使用呢？<br><a id="more"></a></p>
+<hr>
+<p>监听事件：在节点上能被监听时的页面操作。如：select节点的change事件，a节点的click事件。<br>浏览器默认动作：指特定页面元素上带有的功能，如：点击a链接时的跳转动作，表单提交动作等；</p>
+<hr>
+<h1 id="stopPropagation"><a href="#stopPropagation" class="headerlink" title="stopPropagation( )"></a><strong>stopPropagation( )</strong></h1><p>因为事件可以在各层级的节点中传递，不管是冒泡还是捕获，有时我们希望事件在特定节点执行之后不再传递，可以使事件对象的<strong><em>stopPropagation( )</em></strong>方法；</p>
+<p>假设页面上存在一个浮动弹出层, 显示在最前面, 当点击弹出层以外页面区域时, 隐藏弹出层. 为了做到这样的效果, 我们会监听 documentElement 的 click 事件, 一旦事件被触发即隐藏弹出层. 但是这显然存在问题.当用户点击弹出层时, 我们不希望它隐藏掉.但因为事件的冒泡传递,documentElement的click事件也会被触发. 这个时候,我们可以监听弹出层的click事件,并使用<strong><em>stopPropagation()</em></strong> 方法阻止冒泡. 请参考下面的代码.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 在弹出对话框上点击时, 不进行任何页面操作, 并阻止冒泡</div><div class="line"></div><div class="line">document.getElementById(&apos;dialog&apos;).onclick = function(ev) &#123;</div><div class="line">	ev.stopPropagation();</div><div class="line">&#125;;</div><div class="line">// 在 documentElement 节点上监听到点击事件时, 隐藏对话框</div><div class="line"></div><div class="line">document.documentElement.onclick = function(ev) &#123;</div><div class="line">	document.getElementById(&apos;dialog&apos;).style.display = &apos;none&apos;;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>stopPropagation() 相当好用, 可是<strong><em> IE8 及以前版本都不支持</em></strong>. IE 的事件对象包含特有的属性 cancelBubble, 只要将它赋值为 false 即可阻止事件继续. 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 在弹出对话框上点击时, 不进行任何页面操作, 并阻止冒泡</div><div class="line"></div><div class="line">document.getElementById(&apos;dialog&apos;).onclick = function(ev) &#123;</div><div class="line">	ev.cancelBubble = false;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="preventDefault"><a href="#preventDefault" class="headerlink" title="preventDefault( )"></a><strong><em>preventDefault( )</em></strong></h1><p>一个带事件监听的链接代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;a href=&quot;http://w3c.org&quot; onclick=&quot;alert(&apos;JavaScript Click Event&apos;);&quot;&gt;点击链接&lt;/a&gt;</div></pre></td></tr></table></figure></p>
+<p>点击该链接, 显示对话框后跳转页面. 由此可知, 除了执行监听事件还会触发浏览器默认动作; 执行监听事件在前, 触发浏览器默认动作在后.<br>这里有个经典示例, 我们希望点击链接在新窗口打开页面, 但不希望当前页面跳转. 这个时候可以使用 preventDefault() 阻止后面将要执行的浏览器默认动作.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;a id=&quot;link&quot; href=&quot;http://w3c.org&quot;&gt;W3C 首页链接&lt;/a&gt;</div><div class="line"> </div><div class="line">&lt;script&gt;</div><div class="line">// 在新窗口, 打开页面</div><div class="line">document.getElementById(&apos;link&apos;).onclick = function(ev) &#123;</div><div class="line">	// 阻止浏览器默认动作 (页面跳转)</div><div class="line">	ev.preventDefault();</div><div class="line">	// 在新窗口打开页面</div><div class="line">	window.open(this.href);</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<hr>
+<h1 id="return-false"><a href="#return-false" class="headerlink" title="return false"></a><strong><em>return false</em></strong></h1><p>退出执行, return false 之后的所有触发事件和动作都不会被执行. 有时候 return false 可以用来替代 stopPropagation() 和 preventDefault(), 比如我们上面新窗口打开链接的例子, 如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;a id=&quot;link&quot; href=&quot;http://w3c.org&quot;&gt;W3C 首页链接&lt;/a&gt;</div><div class="line"> </div><div class="line">&lt;script&gt;</div><div class="line">// 在新窗口, 打开页面</div><div class="line">document.getElementById(&apos;link&apos;).onclick = function(ev) &#123;</div><div class="line">	// 在新窗口打开页面</div><div class="line">	window.open(this.href);</div><div class="line">	// 退出执行 (在监听事件之后执行的浏览器默认动作将不会被执行)</div><div class="line">	return false;</div><div class="line">&#125;;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>有人认为<strong><em>return false = stopPropagation() + preventDefault()</em></strong> 其实是错的. return false 不但阻止事件, 还可以返回对象, 跳出循环等… 方便地一刀切而不够灵活, 滥用易出错.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo-前端/">hexo 前端</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
 	<a class="article-category-link" href="/categories/编程/">编程</a>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/17/stopPropagation-preventDefault和return-false的区别/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/29/js获取css样式的两种方式/" class="archive-article-date">
-  	<time datetime="2017-06-28T17:08:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/29/js获取css样式的两种方式/">js获取css样式的两种方法</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js-前端/">js 前端</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/编程/">编程</a>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/07/01/操作array的方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作array的方法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
 
 
           </div>
@@ -261,8 +301,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
